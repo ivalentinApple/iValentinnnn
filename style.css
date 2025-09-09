@@ -1,0 +1,619 @@
+/* === Global === */
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background: #f5f5f7;
+  color: #111;
+  scroll-behavior: smooth;
+}
+
+/* === Navigation === */
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: rgba(0,0,0,0.85);
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  padding: 1rem 0;
+  z-index: 1000;
+  backdrop-filter: blur(10px);
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  position: relative;
+  padding: 0.25rem 0;
+  transition: color 0.3s;
+}
+
+nav a::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #0a84ff;
+  transition: width 0.3s;
+}
+
+nav a:hover::after {
+  width: 100%;
+}
+
+nav a.active {
+  color: #0a84ff;
+}
+
+/* === Page Accueil === */
+#home {
+  background-color: #000;
+  color: #fff;
+  text-align: center;
+  padding: 6rem 2rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+#home h1 {
+  color: #fff;
+  margin-bottom: 2rem;
+  font-size: 6rem;
+}
+
+#home .home-photo {
+  width: 500px;
+  max-width: 90%;
+  margin: 2rem 0;
+  border-radius: 15px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+#home p {
+  color: #ccc;
+  max-width: 700px;
+  font-size: 1.2rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+/* === Responsive Accueil === */
+@media screen and (max-width: 768px) {
+  #home .home-photo {
+    width: 250px;
+  }
+  #home h1 {
+    font-size: 3rem;
+  }
+  #home p {
+    font-size: 1rem;
+  }
+}
+
+/* === Page Caractéristiques === */
+#caracteristiques {
+  background-color: #000; /* fond noir */
+  color: #fff; /* texte blanc par défaut */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start; /* contenu aligné en haut */
+  min-height: 100vh; /* occupe toute la hauteur de l’écran */
+  padding: 10rem 2rem 2rem; /* padding top + bottom */
+  position: relative;
+}
+
+/* Gros titre "Caractéristiques" */
+#caracteristiques h2 {
+  color: #fff; /* blanc */
+  font-size: 6rem; /* titre très gros */
+  font-weight: 900;
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+/* Conteneur des compétences */
+.skills-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Cartes de compétence */
+.skill {
+  background-color: #111;
+  padding: 1.5rem 2rem;
+  border-radius: 20px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+  opacity: 0;
+  transform: translateY(50px);
+  animation: floatSkill 0.8s ease forwards;
+}
+
+.skill:nth-child(1) { animation-delay: 0.2s; }
+.skill:nth-child(2) { animation-delay: 0.5s; }
+.skill:nth-child(3) { animation-delay: 0.8s; }
+.skill:nth-child(4) { animation-delay: 1.1s; }
+.skill:nth-child(5) { animation-delay: 1.4s; }
+.skill:nth-child(6) { animation-delay: 1.7s; }
+.skill:nth-child(7) { animation-delay: 2s; }
+
+@keyframes floatSkill {
+  from { opacity: 0; transform: translateY(50px) scale(0.9); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* Photos aux extrémités */
+.carac-photo-left,
+.carac-photo-right {
+  position: absolute;
+  top: 140px;
+  width: 120px;
+  border-radius: 10px;
+  z-index: 1;
+}
+
+.carac-photo-left { left: 5%; }
+.carac-photo-right { right: 5%; }
+
+@media screen and (max-width: 768px) {
+  #caracteristiques {
+    padding: 8rem 2rem 2rem;
+  }
+
+  #caracteristiques h2 {
+    font-size: 4rem; /* titre plus petit sur mobile */
+  }
+
+  .carac-photo-left { top: 100px; left: 2%; width: 80px; }
+  .carac-photo-right { top: 100px; right: 2%; width: 80px; }
+}
+
+/* === Page Acheter === */
+#acheter {
+  background-color: #000;
+  color: #fff;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  padding: 6rem 2rem 2rem;
+}
+
+#acheter h1 {
+  color: #fff;
+  margin-bottom: 1rem;
+}
+
+#acheter p {
+  color: #ccc;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+/* === Page Pourquoi lui === */
+#pourquoi {
+  background-color: #f5f5f7;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  text-align: center;
+  padding: 6rem 2rem 2rem;
+  overflow: hidden;
+
+  /* Animation d'apparition générale */
+  opacity: 0;
+  animation: fadeSlide 0.8s ease forwards;
+}
+
+/* Phrase principale en bleu dégradé */
+.center-text {
+  position: relative;
+  z-index: 10;
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-weight: 900;
+  line-height: 1.1;
+  text-align: center;
+  background: linear-gradient(90deg, #66ccff, #0055ff); /* bleu clair → bleu foncé */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 6rem;
+}
+
+/* Conteneur des bulles */
+.mindmap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+/* Bulles façon iMessage */
+.mindmap .bubble {
+  position: absolute;
+  background-color: #0a84ff; 
+  color: #fff;
+  padding: 0.8rem 1.2rem;
+  border-radius: 20px 20px 20px 5px;
+  font-weight: 600;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  animation: floatBubble 3s ease-in-out infinite alternate;
+  max-width: 200px;
+  text-align: left;
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+/* Petite queue façon iMessage */
+.mindmap .bubble::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 12px;
+  width: 0;
+  height: 0;
+  border: 10px solid transparent;
+  border-top-color: #0a84ff;
+  border-bottom: 0;
+  border-left: 0;
+  margin-left: -5px;
+  margin-bottom: -5px;
+}
+
+/* Animation flottante des bulles */
+@keyframes floatBubble {
+  from { transform: translateY(0px); }
+  to { transform: translateY(-10px); }
+}
+
+/* Exemple de positions dispersées */
+.mindmap .bubble:nth-child(1)  { top: 10%;  left: 7%; }
+.mindmap .bubble:nth-child(2)  { top: 10%; left: 82%; }
+.mindmap .bubble:nth-child(3)  { top: 20%; left: 30%; }
+.mindmap .bubble:nth-child(4)  { top: 30%; left: 65%; }
+.mindmap .bubble:nth-child(5)  { top: 35%; left: 5%; }
+.mindmap .bubble:nth-child(6)  { top: 40%; left: 85%; }
+.mindmap .bubble:nth-child(7)  { top: 70%; left: 47%; }
+.mindmap .bubble:nth-child(8)  { top: 87%; left: 35%; }
+.mindmap .bubble:nth-child(9)  { top: 65%; left: 10%; }
+.mindmap .bubble:nth-child(10) { top: 70%; left: 84%; }
+.mindmap .bubble:nth-child(11) { top: 80%; left: 5%; }
+.mindmap .bubble:nth-child(12) { top: 89%; left: 75%; }
+.mindmap .bubble:nth-child(13) { top: 35%;  left: 45%; }
+.mindmap .bubble:nth-child(14) { top: 14%; left: 60%; }
+.mindmap .bubble:nth-child(15) { top: 75%; left: 25%; }
+.mindmap .bubble:nth-child(16) { top: 80%; left: 60%; }
+.mindmap .bubble:nth-child(17) { top: 40%; left: 15%; }
+.mindmap .bubble:nth-child(18) { top: 60%; left: 75%; }
+
+/* === Animation texte apparition type keynote === */
+@keyframes fadeZoom {
+  from { opacity: 0; transform: scale(0.8); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* === Animation fadeSlide pour la page entière === */
+@keyframes fadeSlide {
+  from { opacity: 0; transform: translateY(50px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+//* === Page Présentation === */
+#presentation {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 8rem 4rem 2rem;
+  gap: 2rem;
+  background: #f5f5f7;
+  color: #111;
+  text-align: left;
+  position: relative;
+}
+
+/* Texte introductif */
+.intro-text h1 {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 900;
+  margin-bottom: 1rem;
+}
+
+.intro-text p {
+  max-width: 800px;
+  line-height: 1.6;
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+/* Ligne de photos */
+.photo-row {
+  display: flex;
+  justify-content: flex-start;
+  gap: 0;
+  margin-top: 2rem;
+  width: 100%;
+}
+
+.photo-row .presentation-photo {
+  width: 25%;
+  border-radius: 0;
+  margin: 0;
+  object-fit: cover;
+}
+
+/* Carte bleue avec texte en dégradé et animation */
+.full-width-blue-card {
+  background-color: #0a84ff;  
+  padding: 1.5rem 1rem;       
+  width: fit-content;          
+  max-width: 80%;              
+  margin: 2rem auto;           
+  border-radius: 25px 25px 25px 0; 
+  box-sizing: border-box;
+  text-align: center;
+}
+
+/* Texte bleu dégradé et animation */
+.animated-text {
+  background: linear-gradient(90deg, #66ccff, #0055ff); /* bleu clair → bleu foncé */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: clamp(1.8rem, 3vw, 2.5rem); /* plus gros texte responsive */
+  font-weight: 700;
+  text-align: center;
+  animation: fadeInMove 1.5s ease forwards; /* animation subtile */
+  opacity: 0; /* départ invisible pour l’animation */
+}
+
+/* Animation fade + léger déplacement vers le haut */
+@keyframes fadeInMove {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* === Responsive général === */
+@media screen and (max-width: 768px) {
+  .animated-text {
+    font-size: clamp(1.5rem, 4vw, 2rem); /* texte plus gros mais adapté mobile */
+  }
+}
+
+/* === Page Antécédents === */
+#antecedents {
+  background-color: #fff; /* fond blanc */
+  color: #111;
+  position: relative;
+  min-height: 100vh;
+  padding: 6rem 2rem 2rem;
+}
+
+/* Titre principal "Antécédents" */
+.main-title {
+  font-size: clamp(3rem, 6vw, 6rem);
+  font-weight: 900;
+  text-align: center;
+  margin-bottom: 4rem;
+  background: linear-gradient(90deg, #FFA500, #003366, #FF69B4, #32CD32);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Grille invisible pour formations */
+.formation-row {
+  display: flex;
+  justify-content: space-between; /* espace régulier entre les colonnes */
+  align-items: flex-start;
+  flex-wrap: wrap; /* responsive */
+  max-width: 1400px;
+  margin: 0 auto;
+  gap: 2rem;
+}
+
+/* Chaque colonne avec image et texte */
+.formation-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: left;
+  flex: 1 1 20%; /* s'adapte à l'espace disponible */
+  min-width: 250px;
+}
+
+/* Image des formations */
+.formation-photo {
+  width: 100%;
+  max-width: 350px;
+  border-radius: 12px;
+  margin-bottom: 1rem;
+}
+
+/* Ligne titre + texte sous l'image */
+.formation-info {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* Titres plus gros */
+.formation-info h3 {
+  font-size: 2.5rem; /* augmenté depuis 2rem */
+  font-weight: 700;
+  margin: 0;
+}
+
+/* Texte descriptif */
+.formation-info p {
+  font-size: 1.2rem; /* légèrement plus grand */
+  line-height: 1.5;
+  margin: 0;
+  max-width: 400px;
+}
+
+
+/* Dégradés de couleur pour chaque titre */
+.ecole-sup {
+  background: linear-gradient(90deg, #FFA500, #FF8C00); /* orange clair → foncé */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.prepa {
+  background: linear-gradient(90deg, #003366, #000033); /* bleu très foncé */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.lycee {
+  background: linear-gradient(90deg, #FF69B4, #C71585); /* rose clair → foncé */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.college {
+  background: linear-gradient(90deg, #32CD32, #006400); /* vert clair → foncé */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Responsive */
+@media screen and (max-width: 1024px) {
+  .formation-row {
+    justify-content: center;
+    gap: 2rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .formation-row {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .formation-col {
+    min-width: 80%;
+  }
+
+  .formation-info {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+/* === Responsive général === */
+@media screen and (max-width: 768px) {
+  #presentation {
+    flex-direction: column;
+    padding: 6rem 2rem 2rem;
+  }
+
+  #presentation .photo-row {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  #presentation .photo-row .presentation-photo {
+    width: 48%;
+    margin-bottom: 0.5rem;
+  }
+
+  #presentation .card {
+    position: relative;
+    bottom: auto;
+    right: auto;
+    max-width: 100%;
+    margin-top: 2rem;
+  }
+
+  #antecedents h2 {
+    font-size: 3rem;
+  }
+}
+
+/* === Titres === */
+h1 { font-size: 4rem; font-weight: 900; margin-bottom: 1rem; }
+h2 { font-size: 2.5rem; font-weight: 600; margin-bottom: 1rem; }
+h3 { font-size: 1.8rem; font-weight: 600; margin-bottom: 1rem; }
+
+p { max-width: 800px; line-height: 1.6; font-size: 1.2rem; margin-bottom: 1rem; }
+
+/* === Cartes === */
+.card {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 20px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+  margin: 1rem 0;
+  max-width: 700px;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 30px rgba(0,0,0,0.15);
+}
+
+/* === Images profil === */
+img.profile {
+  width: 200px;
+  border-radius: 20px;
+  margin-bottom: 2rem;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* === Boutons === */
+.btn {
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  border: none;
+  background-color: #0a84ff;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s, background-color 0.3s;
+  margin-top: 2rem;
+}
+
+.btn:hover {
+  background-color: #0066cc;
+  transform: translateY(-2px);
+}
+
+/* === Animations === */
+.page {
+  animation: fadeSlide 0.8s ease forwards;
+}
+
+@keyframes fadeSlide {
+  from { opacity: 0; transform: translateY(50px); }
+  to { opacity: 1; transform: translateY(0); }
+}
